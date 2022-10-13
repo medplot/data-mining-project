@@ -1,0 +1,8 @@
+.idea
+.DS_Store
+brfss_dataset/2011.csv
+brfss_dataset/2012.csv
+brfss_dataset/2013.csv
+brfss_dataset/2014.csv
+brfss_dataset/2015.csv
+brfss_dataset/2015_formats.json
