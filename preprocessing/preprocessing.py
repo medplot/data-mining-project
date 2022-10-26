@@ -11,8 +11,14 @@ from sklearn.preprocessing import OneHotEncoder
 
 from imblearn.over_sampling import RandomOverSampler
 
-columns_to_remove = ["FMONTH", "IDATE", "IDAY", "IMONTH", "IYEAR", "DISPCODE", "SEQNO", "_PSU", "CTELENUM", "EXACTOT1",
-                     "EXACTOT2", "PCDMDECN"]
+relevant_columns = ["GENHLTH", "PHYSHLTH", "MENTHLTH", "HLTHPLN1", "MEDCOST", "CHECKUP1", "BPHIGH4", "TOLDHI2",
+                    "CVDINFR4", "CVDCRHD4", "CVDSTRK3", "ASTHMA3", "HAVARTH3", "CHCKIDNY", "SEX", "INCOME2",
+                    "WTCHSALT", "_AGEG5YR", "HTM4", "WTKG3", "_BMI5CAT", "_EDUCAG", "_RFDRHV5", "_SMOKER3", "_FRTLT1",
+                    "_VEGLT1", "_PACAT1", "_PASTRNG"]
+readable_column_names = ["GenHealth", "PhysHealth", "MentHealth", "Healthcare", "MedCost", "Checkup", "HighBP",
+                         "HighChol", "HeartAttack", "AngiCoro", "Stroke", "Asthma", "Arthritis", "Kidney", "Sex",
+                         "Income", "SodiumSalt", "Age", "Height", "Weight", "BMI", "Education", "Alcohol", "Smoking",
+                         "FruitCons", "VegetCons", "PhysActivity", "Muscles"]
 diabetes_columns = ["Yes", "Yes, but only during pregnancy", "No", "No, but pre-diabetes", "Don't know", "Refused"]
 
 
@@ -59,7 +65,8 @@ def preprocess_brfss_dataset(dataset: DataFrame) -> Tuple[DataFrame, DataFrame]:
     dataset = dataset.dropna(subset=['DIABETE3'])
     brfss_target = pd.DataFrame(dataset["DIABETE3"])
     brfss_preprocessed = dataset.drop(columns="DIABETE3")
-    brfss_preprocessed = brfss_preprocessed.drop(columns=columns_to_remove)
+    brfss_preprocessed = brfss_preprocessed[relevant_columns]
+    brfss_preprocessed.columns = readable_column_names
     brfss_preprocessed = brfss_preprocessed.fillna(0)
     return brfss_preprocessed, brfss_target
 
@@ -72,3 +79,8 @@ def download_brfss_dataset(kaggle_username, kaggle_api_key):
     kaggle.api.dataset_download_files('cdc/behavioral-risk-factor-surveillance-system', path='../brfss_dataset',
                                       unzip=True)
     pass
+
+
+pd.set_option('display.max_columns', 30)
+dataset, target = get_preprocessed_brfss_dataset()
+print(dataset.head())
