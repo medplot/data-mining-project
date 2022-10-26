@@ -68,6 +68,18 @@ def preprocess_brfss_dataset(dataset: DataFrame) -> Tuple[DataFrame, DataFrame]:
     brfss_preprocessed = brfss_preprocessed[relevant_columns]
     brfss_preprocessed.columns = readable_column_names
     brfss_preprocessed = brfss_preprocessed.fillna(0)
+
+    print(brfss_preprocessed.shape)
+    brfss_preprocessed = brfss_preprocessed[brfss_preprocessed.GenHealth != 7]
+    brfss_preprocessed = brfss_preprocessed[brfss_preprocessed.GenHealth != 9]
+    print(brfss_preprocessed.shape)
+    brfss_preprocessed = brfss_preprocessed[brfss_preprocessed.PhysHealth != 7]
+    brfss_preprocessed = brfss_preprocessed[brfss_preprocessed.PhysHealth != 9]
+    print(brfss_preprocessed.shape)
+    brfss_preprocessed = brfss_preprocessed[brfss_preprocessed.MentHealth != 7]
+    brfss_preprocessed = brfss_preprocessed[brfss_preprocessed.MentHealth != 9]
+    print(brfss_preprocessed.shape)
+
     return brfss_preprocessed, brfss_target
 
 
