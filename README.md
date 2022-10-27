@@ -1,4 +1,5 @@
 # Medplot Data Mining Project
+![Medplot CI pipeline](https://github.com/medplot/data-mining-project/actions/workflows/ci.yml/badge.svg)
 
 ## Download Behavioral Risk Factor Surveillance System dataset
 To download the brfss dataset you can use the following function if you want. 
