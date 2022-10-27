@@ -11,6 +11,8 @@ from sklearn.preprocessing import OneHotEncoder
 
 from imblearn.over_sampling import RandomOverSampler
 
+from config.config import ROOT_DIRECTORY
+
 relevant_columns = ["GENHLTH", "PHYSHLTH", "MENTHLTH", "HLTHPLN1", "MEDCOST", "CHECKUP1", "BPHIGH4", "TOLDHI2",
                     "CVDINFR4", "CVDCRHD4", "CVDSTRK3", "ASTHMA3", "HAVARTH3", "CHCKIDNY", "SEX", "INCOME2",
                     "WTCHSALT", "_AGEG5YR", "HTM4", "WTKG3", "_BMI5CAT", "_EDUCAG", "_RFDRHV5", "_SMOKER3", "_FRTLT1",
@@ -23,7 +25,7 @@ diabetes_columns = ["Yes", "Yes, but only during pregnancy", "No", "No, but pre-
 
 
 def load_dataset():
-    return pd.read_csv("../brfss_dataset/2015.csv")
+    return pd.read_csv(os.path.join(ROOT_DIRECTORY, 'brfss_dataset', '2015.csv'))
 
 
 def get_preprocessed_brfss_dataset() -> Tuple[DataFrame, DataFrame]:
