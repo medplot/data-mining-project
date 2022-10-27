@@ -1,6 +1,5 @@
-"""
-To ensure that all jupyter notebokks always use the same preprocessing, all preprocessing steps are implemented in this file.
-"""
+"""To ensure that all jupyter notebokks always use the same preprocessing, all preprocessing steps are implemented in
+this file. """
 import os
 import pandas as pd
 from pandas import DataFrame
@@ -30,6 +29,7 @@ def load_dataset():
     except FileNotFoundError:
         return pd.read_csv(os.path.join(ROOT_DIRECTORY, 'brfss_dataset', '2015_small.csv'))
 
+
 def get_preprocessed_brfss_dataset() -> Tuple[DataFrame, DataFrame]:
     dataset = load_dataset()
     return preprocess_brfss_dataset(dataset)
@@ -44,7 +44,7 @@ def get_preprocessed_brfss_train_test_split(oversampling=False) -> Tuple[DataFra
 
 
 def get_preprocessed_brfss_train_test_split_one_hot_encoded(oversampling=False) -> Tuple[
-    DataFrame, DataFrame, DataFrame, DataFrame]:
+        DataFrame, DataFrame, DataFrame, DataFrame]:
     dataset = load_dataset()
     preprocessed_dataset, target = preprocess_brfss_dataset(dataset)
     if oversampling:
