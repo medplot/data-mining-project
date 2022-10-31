@@ -49,6 +49,8 @@ the notebooks.
 
 ### Decision Tree
 
+### Random forest
+
 ### Support Vector Machine
 
 ### Artificial neural network
