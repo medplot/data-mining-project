@@ -62,7 +62,7 @@ and passed into multiple linear layers.
 ## General functions for all notebooks
 
 To install all packages that are required for the general functions you can use the `requirements.txt` file. Open a
-terminal, navigate to the project root, activate the project environment and execute the following command to isntall
+terminal, navigate to the project root, activate the project environment and execute the following command to install
 all dependencies from the `requirements.txt`file.
 
 ```
