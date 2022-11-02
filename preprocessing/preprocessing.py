@@ -7,6 +7,7 @@ from typing import Tuple
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import MinMaxScaler
 
 from imblearn.over_sampling import RandomOverSampler
 
@@ -114,6 +115,15 @@ def remove_unknown_columns(dataset: DataFrame) -> DataFrame:
     return dataset
 
 
+def normalize_numerical_values(dataset: DataFrame) -> DataFrame:
+    scaler = MinMaxScaler()
+    dataset["PhysHealth"] = dataset["PhysHealth"].replace(88, 0)
+    dataset["MentHealth"] = dataset["MentHealth"].replace(88, 0)
+    dataset[["PhysHealth", "MentHealth", "Income", "Height", "Weight"]] = \
+        scaler.fit_transform(dataset[["PhysHealth", "MentHealth", "Income", "Height", "Weight"]])
+    return dataset
+
+
 def preprocess_brfss_dataset(dataset: DataFrame) -> Tuple[DataFrame, DataFrame]:
     dataset = dataset.dropna(subset=['DIABETE3'])
     brfss_target = pd.DataFrame(dataset["DIABETE3"])
@@ -124,6 +134,7 @@ def preprocess_brfss_dataset(dataset: DataFrame) -> Tuple[DataFrame, DataFrame]:
 
     brfss_preprocessed = remove_refused_columns(brfss_preprocessed)  # removes ca. 115k columns
     brfss_preprocessed = remove_unknown_columns(brfss_preprocessed)  # removes ca. 37k columns
+    brfss_preprocessed = normalize_numerical_values(brfss_preprocessed)
 
     return brfss_preprocessed, brfss_target
 
@@ -140,4 +151,3 @@ def download_brfss_dataset(kaggle_username, kaggle_api_key):
 
 pd.set_option('display.max_columns', 30)
 dataset, target = get_preprocessed_brfss_dataset()
-#print(dataset.head())
