@@ -22,7 +22,7 @@ readable_column_names = ["Diabetes", "GenHealth", "PhysHealth", "MentHealth", "H
                          "HighBP", "HighChol", "HeartAttack", "AngiCoro", "Stroke", "Asthma", "Arthritis", "Kidney",
                          "Sex", "Income", "SodiumSalt", "Age", "Height", "Weight", "BMI", "Education", "Alcohol",
                          "Smoking", "FruitCons", "VegetCons", "PhysActivity", "Muscles"]
-diabetes_columns = ["Yes", "Yes, but only during pregnancy", "No", "No, but pre-diabetes", "Don't know", "Refused"]
+diabetes_columns = ["Yes", "Yes, but only during pregnancy", "No", "No, but pre-diabetes"]
 # dont know und refused entfernen
 
 
@@ -143,7 +143,6 @@ def preprocess_brfss_dataset(dataset: DataFrame) -> Tuple[DataFrame, DataFrame]:
 
     brfss_target = pd.DataFrame(brfss_preprocessed["Diabetes"])
     brfss_preprocessed = brfss_preprocessed.drop(columns="Diabetes")
-
     brfss_preprocessed = brfss_preprocessed.fillna(0)
     brfss_preprocessed = normalize_numerical_values(brfss_preprocessed)
 
