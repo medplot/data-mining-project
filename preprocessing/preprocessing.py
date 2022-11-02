@@ -10,6 +10,7 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import MinMaxScaler
 
 from imblearn.over_sampling import RandomOverSampler
+from imblearn.under_sampling import RandomUnderSampler
 
 from config.config import ROOT_DIRECTORY
 
@@ -64,6 +65,12 @@ def split_dataset(preprocessed_dataset, target) -> Tuple[DataFrame, DataFrame, D
 def oversample_dataset(dataset, target) -> Tuple[DataFrame, DataFrame]:
     over_sampler = RandomOverSampler()
     brfss_balanced, brfss_balanced_target = over_sampler.fit_resample(dataset, target)
+    return brfss_balanced, brfss_balanced_target
+
+
+def undersample_dataset(dataset, target) -> Tuple[DataFrame, DataFrame]:
+    under_sampler = RandomUnderSampler()
+    brfss_balanced, brfss_balanced_target = under_sampler.fit_resample(dataset, target)
     return brfss_balanced, brfss_balanced_target
 
 
