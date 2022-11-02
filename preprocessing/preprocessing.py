@@ -1,6 +1,5 @@
-"""
-To ensure that all jupyter notebokks always use the same preprocessing, all preprocessing steps are implemented in this file.
-"""
+"""To ensure that all jupyter notebokks always use the same preprocessing, all preprocessing steps are implemented in
+this file. """
 import os
 import pandas as pd
 from pandas import DataFrame
@@ -10,6 +9,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 
 from imblearn.over_sampling import RandomOverSampler
+
+from config.config import ROOT_DIRECTORY
 
 relevant_columns = ["GENHLTH", "PHYSHLTH", "MENTHLTH", "HLTHPLN1", "MEDCOST", "CHECKUP1", "BPHIGH4", "TOLDHI2",
                     "CVDINFR4", "CVDCRHD4", "CVDSTRK3", "ASTHMA3", "HAVARTH3", "CHCKIDNY", "SEX", "INCOME2",
@@ -23,7 +24,10 @@ diabetes_columns = ["Yes", "Yes, but only during pregnancy", "No", "No, but pre-
 
 
 def load_dataset():
-    return pd.read_csv("../brfss_dataset/2015.csv")
+    try:
+        return pd.read_csv(os.path.join(ROOT_DIRECTORY, 'brfss_dataset', '2015.csv'))
+    except FileNotFoundError:
+        return pd.read_csv(os.path.join(ROOT_DIRECTORY, 'brfss_dataset', '2015_small.csv'))
 
 
 def get_preprocessed_brfss_dataset() -> Tuple[DataFrame, DataFrame]:
@@ -39,7 +43,8 @@ def get_preprocessed_brfss_train_test_split(oversampling=False) -> Tuple[DataFra
     return split_dataset(preprocessed_dataset, target)
 
 
-def get_preprocessed_brfss_train_test_split_one_hot_encoded(oversampling=False) -> Tuple[DataFrame, DataFrame, DataFrame, DataFrame]:
+def get_preprocessed_brfss_train_test_split_one_hot_encoded(oversampling=False) -> Tuple[
+        DataFrame, DataFrame, DataFrame, DataFrame]:
     dataset = load_dataset()
     preprocessed_dataset, target = preprocess_brfss_dataset(dataset)
     if oversampling:
