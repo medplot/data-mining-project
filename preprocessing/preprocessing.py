@@ -14,15 +14,16 @@ from imblearn.under_sampling import RandomUnderSampler
 
 from config.config import ROOT_DIRECTORY
 
-relevant_columns = ["GENHLTH", "PHYSHLTH", "MENTHLTH", "HLTHPLN1", "MEDCOST", "CHECKUP1", "BPHIGH4", "TOLDHI2",
-                    "CVDINFR4", "CVDCRHD4", "CVDSTRK3", "ASTHMA3", "HAVARTH3", "CHCKIDNY", "SEX", "INCOME2",
+relevant_columns = ["DIABETE3", "GENHLTH", "PHYSHLTH", "MENTHLTH", "HLTHPLN1", "MEDCOST", "CHECKUP1", "BPHIGH4",
+                    "TOLDHI2", "CVDINFR4", "CVDCRHD4", "CVDSTRK3", "ASTHMA3", "HAVARTH3", "CHCKIDNY", "SEX", "INCOME2",
                     "WTCHSALT", "_AGEG5YR", "HTM4", "WTKG3", "_BMI5CAT", "_EDUCAG", "_RFDRHV5", "_SMOKER3", "_FRTLT1",
                     "_VEGLT1", "_PACAT1", "_PASTRNG"]
-readable_column_names = ["GenHealth", "PhysHealth", "MentHealth", "Healthcare", "MedCost", "Checkup", "HighBP",
-                         "HighChol", "HeartAttack", "AngiCoro", "Stroke", "Asthma", "Arthritis", "Kidney", "Sex",
-                         "Income", "SodiumSalt", "Age", "Height", "Weight", "BMI", "Education", "Alcohol", "Smoking",
-                         "FruitCons", "VegetCons", "PhysActivity", "Muscles"]
+readable_column_names = ["Diabetes", "GenHealth", "PhysHealth", "MentHealth", "Healthcare", "MedCost", "Checkup",
+                         "HighBP", "HighChol", "HeartAttack", "AngiCoro", "Stroke", "Asthma", "Arthritis", "Kidney",
+                         "Sex", "Income", "SodiumSalt", "Age", "Height", "Weight", "BMI", "Education", "Alcohol",
+                         "Smoking", "FruitCons", "VegetCons", "PhysActivity", "Muscles"]
 diabetes_columns = ["Yes", "Yes, but only during pregnancy", "No", "No, but pre-diabetes", "Don't know", "Refused"]
+# dont know und refused entfernen
 
 
 def load_dataset():
@@ -75,6 +76,7 @@ def undersample_dataset(dataset, target) -> Tuple[DataFrame, DataFrame]:
 
 
 def remove_refused_columns(dataset: DataFrame) -> DataFrame:
+    dataset = dataset[dataset.Diabetes != 9]
     dataset = dataset[dataset.GenHealth != 9]
     dataset = dataset[dataset.PhysHealth != 99]
     dataset = dataset[dataset.MentHealth != 99]
@@ -103,6 +105,7 @@ def remove_refused_columns(dataset: DataFrame) -> DataFrame:
 
 
 def remove_unknown_columns(dataset: DataFrame) -> DataFrame:
+    dataset = dataset[dataset.Diabetes != 7]
     dataset = dataset[dataset.GenHealth != 7]
     dataset = dataset[dataset.PhysHealth != 77]
     dataset = dataset[dataset.MentHealth != 77]
@@ -126,21 +129,22 @@ def normalize_numerical_values(dataset: DataFrame) -> DataFrame:
     scaler = MinMaxScaler()
     dataset["PhysHealth"] = dataset["PhysHealth"].replace(88, 0)
     dataset["MentHealth"] = dataset["MentHealth"].replace(88, 0)
-    dataset[["PhysHealth", "MentHealth", "Income", "Height", "Weight"]] = \
-        scaler.fit_transform(dataset[["PhysHealth", "MentHealth", "Income", "Height", "Weight"]])
+    dataset[["PhysHealth", "MentHealth", "Height", "Weight"]] = \
+        scaler.fit_transform(dataset[["PhysHealth", "MentHealth", "Height", "Weight"]])
     return dataset
 
 
 def preprocess_brfss_dataset(dataset: DataFrame) -> Tuple[DataFrame, DataFrame]:
     dataset = dataset.dropna(subset=['DIABETE3'])
-    brfss_target = pd.DataFrame(dataset["DIABETE3"])
-    brfss_preprocessed = dataset.drop(columns="DIABETE3")
-    brfss_preprocessed = brfss_preprocessed[relevant_columns]
+    brfss_preprocessed = dataset[relevant_columns]
     brfss_preprocessed.columns = readable_column_names
-    brfss_preprocessed = brfss_preprocessed.fillna(0)
-
     brfss_preprocessed = remove_refused_columns(brfss_preprocessed)  # removes ca. 115k columns
     brfss_preprocessed = remove_unknown_columns(brfss_preprocessed)  # removes ca. 37k columns
+
+    brfss_target = pd.DataFrame(brfss_preprocessed["Diabetes"])
+    brfss_preprocessed = brfss_preprocessed.drop(columns="Diabetes")
+
+    brfss_preprocessed = brfss_preprocessed.fillna(0)
     brfss_preprocessed = normalize_numerical_values(brfss_preprocessed)
 
     return brfss_preprocessed, brfss_target
