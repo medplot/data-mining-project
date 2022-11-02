@@ -66,6 +66,54 @@ def oversample_dataset(dataset, target) -> Tuple[DataFrame, DataFrame]:
     return brfss_balanced, brfss_balanced_target
 
 
+def remove_refused_columns(dataset: DataFrame) -> DataFrame:
+    dataset = dataset[dataset.GenHealth != 9]
+    dataset = dataset[dataset.PhysHealth != 99]
+    dataset = dataset[dataset.MentHealth != 99]
+    dataset = dataset[dataset.Healthcare != 9]
+    dataset = dataset[dataset.MedCost != 9]
+    dataset = dataset[dataset.Checkup != 9]
+    dataset = dataset[dataset.HighBP != 9]
+    dataset = dataset[dataset.HighChol != 9]
+    dataset = dataset[dataset.HeartAttack != 9]
+    dataset = dataset[dataset.AngiCoro != 9]
+    dataset = dataset[dataset.Stroke != 9]
+    dataset = dataset[dataset.Asthma != 9]
+    dataset = dataset[dataset.Arthritis != 9]
+    dataset = dataset[dataset.Kidney != 9]
+    dataset = dataset[dataset.Income != 99]
+    dataset = dataset[dataset.SodiumSalt != 9]
+    dataset = dataset[dataset.Age != 14]
+    dataset = dataset[dataset.Education != 9]
+    dataset = dataset[dataset.Alcohol != 9]
+    dataset = dataset[dataset.Smoking != 9]
+    dataset = dataset[dataset.FruitCons != 9]
+    dataset = dataset[dataset.VegetCons != 9]
+    dataset = dataset[dataset.PhysActivity != 9]
+    dataset = dataset[dataset.Muscles != 9]
+    return dataset
+
+
+def remove_unknown_columns(dataset: DataFrame) -> DataFrame:
+    dataset = dataset[dataset.GenHealth != 7]
+    dataset = dataset[dataset.PhysHealth != 77]
+    dataset = dataset[dataset.MentHealth != 77]
+    dataset = dataset[dataset.Healthcare != 7]
+    dataset = dataset[dataset.MedCost != 7]
+    dataset = dataset[dataset.Checkup != 7]
+    dataset = dataset[dataset.HighBP != 7]
+    dataset = dataset[dataset.HighChol != 7]
+    dataset = dataset[dataset.HeartAttack != 7]
+    dataset = dataset[dataset.AngiCoro != 7]
+    dataset = dataset[dataset.Stroke != 7]
+    dataset = dataset[dataset.Asthma != 7]
+    dataset = dataset[dataset.Arthritis != 7]
+    dataset = dataset[dataset.Kidney != 7]
+    dataset = dataset[dataset.Income != 77]
+    dataset = dataset[dataset.SodiumSalt != 7]
+    return dataset
+
+
 def preprocess_brfss_dataset(dataset: DataFrame) -> Tuple[DataFrame, DataFrame]:
     dataset = dataset.dropna(subset=['DIABETE3'])
     brfss_target = pd.DataFrame(dataset["DIABETE3"])
@@ -74,16 +122,8 @@ def preprocess_brfss_dataset(dataset: DataFrame) -> Tuple[DataFrame, DataFrame]:
     brfss_preprocessed.columns = readable_column_names
     brfss_preprocessed = brfss_preprocessed.fillna(0)
 
-    print(brfss_preprocessed.shape)
-    brfss_preprocessed = brfss_preprocessed[brfss_preprocessed.GenHealth != 7]
-    brfss_preprocessed = brfss_preprocessed[brfss_preprocessed.GenHealth != 9]
-    print(brfss_preprocessed.shape)
-    brfss_preprocessed = brfss_preprocessed[brfss_preprocessed.PhysHealth != 7]
-    brfss_preprocessed = brfss_preprocessed[brfss_preprocessed.PhysHealth != 9]
-    print(brfss_preprocessed.shape)
-    brfss_preprocessed = brfss_preprocessed[brfss_preprocessed.MentHealth != 7]
-    brfss_preprocessed = brfss_preprocessed[brfss_preprocessed.MentHealth != 9]
-    print(brfss_preprocessed.shape)
+    brfss_preprocessed = remove_refused_columns(brfss_preprocessed)  # removes ca. 115k columns
+    brfss_preprocessed = remove_unknown_columns(brfss_preprocessed)  # removes ca. 37k columns
 
     return brfss_preprocessed, brfss_target
 
@@ -100,4 +140,4 @@ def download_brfss_dataset(kaggle_username, kaggle_api_key):
 
 pd.set_option('display.max_columns', 30)
 dataset, target = get_preprocessed_brfss_dataset()
-print(dataset.head())
+#print(dataset.head())
