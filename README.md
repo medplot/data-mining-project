@@ -49,18 +49,26 @@ the notebooks.
 
 ### Decision Tree
 
+The decision tree could be computed relatively fast allowing us to use cross validation and grid search to
+find the best parameters.
+
+### Random forest
+
+The random forest cluster was computation intensive and therefore we used a train/test split to find the best
+parameters.
+
 ### Support Vector Machine
 
 ### Artificial neural network
 
 The neural network uses an embedding layer for the categorical input values, followed by a dropout layer. For the
-numerical input values, a batch normalization is applied first. After these first steps the input values are concatenated
-and passed into multiple linear layers.
+numerical input values, a batch normalization is applied first. After these first steps the input values are
+concatenated and passed into multiple linear layers.
 
 ## General functions for all notebooks
 
 To install all packages that are required for the general functions you can use the `requirements.txt` file. Open a
-terminal, navigate to the project root, activate the project environment and execute the following command to isntall
+terminal, navigate to the project root, activate the project environment and execute the following command to install
 all dependencies from the `requirements.txt`file.
 
 ```
