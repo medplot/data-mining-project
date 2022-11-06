@@ -6,7 +6,6 @@ from pandas import DataFrame
 from typing import Tuple
 
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import MinMaxScaler
 
 from imblearn.over_sampling import RandomOverSampler
@@ -23,7 +22,6 @@ readable_column_names = ["Diabetes", "GenHealth", "PhysHealth", "MentHealth", "H
                          "Sex", "Income", "SodiumSalt", "Age", "Height", "Weight", "BMI", "Education", "Alcohol",
                          "Smoking", "FruitCons", "VegetCons", "PhysActivity", "Muscles"]
 diabetes_columns = ["Yes", "Yes, but only during pregnancy", "No", "No, but pre-diabetes"]
-# dont know und refused entfernen
 
 
 def load_dataset():
@@ -35,29 +33,11 @@ def load_dataset():
 
 def get_preprocessed_brfss_dataset() -> Tuple[DataFrame, DataFrame]:
     dataset = load_dataset()
-    return preprocess_brfss_dataset(dataset)
-
-
-def get_preprocessed_brfss_train_test_split(oversampling=False) -> Tuple[DataFrame, DataFrame, DataFrame, DataFrame]:
-    dataset = load_dataset()
     preprocessed_dataset, target = preprocess_brfss_dataset(dataset)
-    if oversampling:
-        preprocessed_dataset, target = oversample_dataset(preprocessed_dataset, target)
-    return split_dataset(preprocessed_dataset, target)
+    return preprocessed_dataset, target
 
 
-def get_preprocessed_brfss_train_test_split_one_hot_encoded(oversampling=False) -> Tuple[
-        DataFrame, DataFrame, DataFrame, DataFrame]:
-    dataset = load_dataset()
-    preprocessed_dataset, target = preprocess_brfss_dataset(dataset)
-    if oversampling:
-        preprocessed_dataset, target = oversample_dataset(preprocessed_dataset, target)
-    one_hot_encoder = OneHotEncoder()
-    target = pd.DataFrame(one_hot_encoder.fit_transform(target).toarray(), columns=diabetes_columns)
-    return split_dataset(preprocessed_dataset, target)
-
-
-def split_dataset(preprocessed_dataset, target) -> Tuple[DataFrame, DataFrame, DataFrame, DataFrame]:
+def get_train_test_split(preprocessed_dataset, target) -> Tuple[DataFrame, DataFrame, DataFrame, DataFrame]:
     data_train, data_test, target_train, target_test = train_test_split(
         preprocessed_dataset, target, test_size=0.2, random_state=42, stratify=target)
     return data_train, data_test, target_train, target_test
@@ -158,6 +138,3 @@ def download_brfss_dataset(kaggle_username, kaggle_api_key):
                                       unzip=True)
     pass
 
-
-pd.set_option('display.max_columns', 30)
-dataset, target = get_preprocessed_brfss_dataset()
