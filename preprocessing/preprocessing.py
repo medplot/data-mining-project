@@ -137,4 +137,3 @@ def download_brfss_dataset(kaggle_username, kaggle_api_key):
     kaggle.api.dataset_download_files('cdc/behavioral-risk-factor-surveillance-system', path='../brfss_dataset',
                                       unzip=True)
     pass
-

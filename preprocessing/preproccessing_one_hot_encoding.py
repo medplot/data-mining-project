@@ -29,8 +29,8 @@ def get_preprocessed_brfss_dataset_one_hot_encoded(target_one_hot_encoded=False)
 # Returns preprocessed dataset where all columns with ordinal values are one hot encoded (including yes/no columns)
 # If the parameter is set to true, the target column will also be one hot encoded
 # This function does not include any sampling
-def get_preprocessed_brfss_dataset_one_hot_encoded_all_columns(target_one_hot_encoded=False) -> Tuple[
-    DataFrame, DataFrame]:
+def get_preprocessed_brfss_dataset_one_hot_encoded_all_columns(target_one_hot_encoded=False) \
+        -> Tuple[DataFrame, DataFrame]:
     dataset, target = get_preprocessed_brfss_dataset()
     one_hot_encoder = OneHotEncoder()
     encoded = pd.DataFrame(
@@ -55,7 +55,8 @@ def get_preprocessed_brfss_dataset_one_hot_encoded_all_columns(target_one_hot_en
 # Returns preprocessed dataset where all columns with ordinal values that are not simply yes/no are one hot encoded
 # If the parameter is set to true, the target column will also be one hot encoded
 # This function includes oversampling
-def get_preprocessed_brfss_dataset_one_hot_encoded_oversampled(target_one_hot_encoded=False) -> Tuple[DataFrame, DataFrame]:
+def get_preprocessed_brfss_dataset_one_hot_encoded_oversampled(target_one_hot_encoded=False) \
+        -> Tuple[DataFrame, DataFrame]:
     dataset, target = get_preprocessed_brfss_dataset_one_hot_encoded(target_one_hot_encoded)
     dataset, target = oversample_dataset(dataset, target)
     return dataset, target
@@ -64,7 +65,8 @@ def get_preprocessed_brfss_dataset_one_hot_encoded_oversampled(target_one_hot_en
 # Returns preprocessed dataset where all columns with ordinal values that are not simply yes/no are one hot encoded
 # If the parameter is set to true, the target column will also be one hot encoded
 # This function includes undersampling
-def get_preprocessed_brfss_dataset_one_hot_encoded_undersampled(target_one_hot_encoded=False) -> Tuple[DataFrame, DataFrame]:
+def get_preprocessed_brfss_dataset_one_hot_encoded_undersampled(target_one_hot_encoded=False) \
+        -> Tuple[DataFrame, DataFrame]:
     dataset, target = get_preprocessed_brfss_dataset_one_hot_encoded(target_one_hot_encoded)
     dataset, target = undersample_dataset(dataset, target)
     return dataset, target
@@ -73,7 +75,8 @@ def get_preprocessed_brfss_dataset_one_hot_encoded_undersampled(target_one_hot_e
 # Returns preprocessed dataset where all columns with ordinal values are one hot encoded (including yes/no columns)
 # If the parameter is set to true, the target column will also be one hot encoded
 # This function includes oversampling
-def get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_oversampled(target_one_hot_encoded=False) -> Tuple[DataFrame, DataFrame]:
+def get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_oversampled(target_one_hot_encoded=False) \
+        -> Tuple[DataFrame, DataFrame]:
     dataset, target = get_preprocessed_brfss_dataset_one_hot_encoded_all_columns(target_one_hot_encoded)
     dataset, target = oversample_dataset(dataset, target)
     return dataset, target
@@ -82,7 +85,8 @@ def get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_oversampled(targe
 # Returns preprocessed dataset where all columns with ordinal values are one hot encoded (including yes/no columns)
 # If the parameter is set to true, the target column will also be one hot encoded
 # This function includes undersampling
-def get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_undersampled(target_one_hot_encoded=False) -> Tuple[DataFrame, DataFrame]:
+def get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_undersampled(target_one_hot_encoded=False) \
+        -> Tuple[DataFrame, DataFrame]:
     dataset, target = get_preprocessed_brfss_dataset_one_hot_encoded_all_columns(target_one_hot_encoded)
     dataset, target = undersample_dataset(dataset, target)
     return dataset, target

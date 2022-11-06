@@ -1,8 +1,7 @@
 from pandas import DataFrame
 from typing import Tuple
 
-from preprocessing.preprocessing import get_preprocessed_brfss_dataset, diabetes_columns, oversample_dataset, \
-    undersample_dataset
+from preprocessing.preprocessing import get_preprocessed_brfss_dataset, oversample_dataset, undersample_dataset
 
 
 # Returns preprocessed dataset where all ordinal values keep their label encoding
@@ -25,4 +24,3 @@ def get_preprocessed_brfss_dataset_label_encoded_undersampled() -> Tuple[DataFra
     dataset, target = get_preprocessed_brfss_dataset()
     dataset, target = undersample_dataset(dataset, target)
     return dataset, target
-
