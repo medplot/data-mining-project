@@ -1,7 +1,7 @@
 from pandas import DataFrame
 from typing import Tuple
 
-from preprocessing.preprocessing import get_preprocessed_brfss_dataset, oversample_dataset, undersample_dataset
+from preprocessing import get_preprocessed_brfss_dataset, oversample_dataset, undersample_dataset
 
 
 # Returns preprocessed dataset where all ordinal values keep their label encoding
