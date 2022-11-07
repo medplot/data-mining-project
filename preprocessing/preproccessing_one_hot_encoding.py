@@ -4,7 +4,7 @@ from typing import Tuple
 
 from sklearn.preprocessing import OneHotEncoder
 
-from preprocessing import get_preprocessed_brfss_dataset, diabetes_columns, oversample_dataset, \
+from preprocessing.preprocessing import get_preprocessed_brfss_dataset, diabetes_columns, oversample_dataset, \
     undersample_dataset
 
 
