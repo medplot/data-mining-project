@@ -121,6 +121,7 @@ def preprocess_brfss_dataset(dataset: DataFrame) -> Tuple[DataFrame, DataFrame]:
     brfss_preprocessed = remove_refused_columns(brfss_preprocessed)  # removes ca. 115k columns
     brfss_preprocessed = remove_unknown_columns(brfss_preprocessed)  # removes ca. 37k columns
 
+    brfss_preprocessed.reset_index(inplace=True)
     brfss_target = pd.DataFrame(brfss_preprocessed["Diabetes"])
     brfss_preprocessed = brfss_preprocessed.drop(columns="Diabetes")
     brfss_preprocessed = brfss_preprocessed.fillna(0)
