@@ -1,5 +1,13 @@
-from preprocessing.preprocessing_one_hot_encoding import *
-from preprocessing.preprocessing_label_encoding import *
+from preprocessing.preprocessing_label_encoding import get_preprocessed_brfss_dataset_label_encoded_train_test_split, \
+    get_preprocessed_brfss_dataset_label_encoded_train_test_split_oversampled, \
+    get_preprocessed_brfss_dataset_label_encoded_train_test_split_undersampled
+from preprocessing.preprocessing_one_hot_encoding import \
+    get_preprocessed_brfss_dataset_one_hot_encoded_train_test_split, \
+    get_preprocessed_brfss_dataset_one_hot_encoded_train_test_split_oversampled, \
+    get_preprocessed_brfss_dataset_one_hot_encoded_train_test_split_undersampled, \
+    get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_train_test_split, \
+    get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_train_test_split_oversampled, \
+    get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_train_test_split_undersampled
 
 
 class TestPreprocessing:
