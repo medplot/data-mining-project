@@ -68,7 +68,7 @@ class TestPreprocessing:
         assert train_target is not None, "train_target not None"
         assert test_target is not None, "test_target not None"
 
-    def test_get_preprocessed_brfss_dataset_one_hot_encoded_train_test_split_oversampled(self):
+    def test_get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_train_test_split_oversampled(self):
         train_data, test_data, train_target, test_target = \
             get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_train_test_split_oversampled()
         assert train_data is not None, "train_data not None"
@@ -76,7 +76,7 @@ class TestPreprocessing:
         assert train_target is not None, "train_target not None"
         assert test_target is not None, "test_target not None"
 
-    def test_get_preprocessed_brfss_dataset_one_hot_encoded_train_test_split_undersampled(self):
+    def test_get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_train_test_split_undersampled(self):
         train_data, test_data, train_target, test_target = \
             get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_train_test_split_undersampled()
         assert train_data is not None, "train_data not None"
