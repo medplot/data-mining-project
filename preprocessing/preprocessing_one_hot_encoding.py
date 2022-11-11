@@ -104,7 +104,7 @@ def get_preprocessed_brfss_dataset_one_hot_encoded_train_test_split_undersampled
 # If the parameter is set to true, the target column will also be one hot encoded.
 # This function includes oversampling
 def get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_train_test_split_oversampled\
-                (target_one_hot_encoded=False) -> Tuple[DataFrame, DataFrame, DataFrame, DataFrame]:
+            (target_one_hot_encoded=False) -> Tuple[DataFrame, DataFrame, DataFrame, DataFrame]:
     data_train, data_test, target_train, target_test = \
         get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_train_test_split(False)
     data_train, target_train = oversample_dataset(data_train, target_train)
@@ -119,7 +119,7 @@ def get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_train_test_split_
 # If the parameter is set to true, the target column will also be one hot encoded.
 # This function includes undersampling
 def get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_train_test_split_undersampled\
-                (target_one_hot_encoded=False) -> Tuple[DataFrame, DataFrame, DataFrame, DataFrame]:
+            (target_one_hot_encoded=False) -> Tuple[DataFrame, DataFrame, DataFrame, DataFrame]:
     data_train, data_test, target_train, target_test = \
         get_preprocessed_brfss_dataset_one_hot_encoded_all_columns_train_test_split(False)
     data_train, target_train = undersample_dataset(data_train, target_train)
