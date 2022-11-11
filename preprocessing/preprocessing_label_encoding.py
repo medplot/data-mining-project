@@ -9,8 +9,7 @@ from preprocessing.preprocessing import get_preprocessed_brfss_dataset, oversamp
 # Returns preprocessed dataset where all ordinal values keep their label encoding.
 # This function does not include any sampling.
 def get_preprocessed_brfss_dataset_label_encoded() -> Tuple[DataFrame, DataFrame]:
-    dataset, target = get_preprocessed_brfss_dataset()
-    return dataset, target
+    return get_preprocessed_brfss_dataset()
 
 
 # Returns a train/test split of the preprocessed dataset where all ordinal values keep their label encoding.
@@ -18,8 +17,7 @@ def get_preprocessed_brfss_dataset_label_encoded() -> Tuple[DataFrame, DataFrame
 def get_preprocessed_brfss_dataset_label_encoded_train_test_split() \
         -> Tuple[DataFrame, DataFrame, DataFrame, DataFrame]:
     dataset, target = get_preprocessed_brfss_dataset_label_encoded()
-    data_train, data_test, target_train, target_test = get_train_test_split(dataset, target)
-    return data_train, data_test, target_train, target_test
+    return get_train_test_split(dataset, target)
 
 
 # Returns a train/test split of the preprocessed dataset where all ordinal values keep their label encoding.
