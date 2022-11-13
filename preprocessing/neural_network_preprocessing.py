@@ -1,13 +1,14 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
-from preprocessing.preprocessing import get_preprocessed_brfss_dataset, split_dataset, diabetes_columns
+from preprocessing.preprocessing import get_preprocessed_brfss_dataset, get_train_test_split, diabetes_columns, \
+    undersample_dataset
 
-CATEGORICAL_COLUMNS = ["GenHealth", "PhysHealth", "MentHealth", "Healthcare", "MedCost", "Checkup", "HighBP",
+CATEGORICAL_COLUMNS = ["GenHealth", "Healthcare", "MedCost", "Checkup", "HighBP",
                        "HighChol", "HeartAttack", "AngiCoro", "Stroke", "Asthma", "Arthritis", "Kidney", "Sex",
                        "Income", "SodiumSalt", "Age", "BMI", "Education", "Alcohol", "Smoking",
                        "FruitCons", "VegetCons", "PhysActivity", "Muscles"]
-NUMERICAL_COLUMNS = ["Height", "Weight"]
+NUMERICAL_COLUMNS = ["PhysHealth", "MentHealth", "Height", "Weight"]
 
 
 def get_number_of_numerical_features():
@@ -36,5 +37,8 @@ class NeuralNetworkPreprocessor:
     def get_preprocessed_dataset_for_neural_network(self):
         one_hot_encoder = OneHotEncoder()
         self.target = pd.DataFrame(one_hot_encoder.fit_transform(self.target).toarray(), columns=diabetes_columns)
-        data_train, data_test, target_train, target_test = split_dataset(self.dataset, self.target)
+        data_train, data_test, target_train, target_test = get_train_test_split(self.dataset, self.target)
+        #data_train, target_train = undersample_dataset(data_train, target_train)
+        #target_train = pd.DataFrame(one_hot_encoder.fit_transform(target_train).toarray(), columns=diabetes_columns)
+        #target_test = pd.DataFrame(one_hot_encoder.transform(target_test).toarray(), columns=diabetes_columns)
         return data_train, data_test, target_train, target_test
