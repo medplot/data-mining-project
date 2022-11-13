@@ -36,8 +36,8 @@ class NeuralNetworkPreprocessor:
 
     def get_preprocessed_dataset_for_neural_network(self):
         one_hot_encoder = OneHotEncoder()
-        self.target = pd.DataFrame(one_hot_encoder.fit_transform(self.target).toarray(), columns=diabetes_columns)
-        data_train, data_test, target_train, target_test = get_train_test_split(self.dataset, self.target)
+        complete_target = pd.DataFrame(one_hot_encoder.fit_transform(self.target).toarray(), columns=diabetes_columns)
+        data_train, data_test, target_train, target_test = get_train_test_split(self.dataset, complete_target)
         return data_train, data_test, target_train, target_test
 
     def get_preprocessed_dataset_for_neural_network_undersampled(self):
