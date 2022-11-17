@@ -3,7 +3,7 @@ this file. """
 import os
 import pandas as pd
 from pandas import DataFrame
-from typing import Tuple
+from typing import Tuple, Union
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
@@ -35,6 +35,17 @@ def get_preprocessed_brfss_dataset() -> Tuple[DataFrame, DataFrame]:
     dataset = load_dataset()
     preprocessed_dataset, target = preprocess_brfss_dataset(dataset)
     return preprocessed_dataset, target
+
+
+def get_train_validation_test_split(preprocessed_dataset, target, include_test_data) \
+        -> Union[Tuple[DataFrame, DataFrame, DataFrame, DataFrame], Tuple[
+            DataFrame, DataFrame, DataFrame, DataFrame, DataFrame, DataFrame]]:
+    data_train, data_test, target_train, target_test = get_train_test_split(preprocessed_dataset, target)
+    data_train, data_validation, target_train, target_validation = get_train_test_split(data_train, target_train)
+    if include_test_data:
+        return data_train, data_validation, data_test, target_train, target_validation, target_test
+    else:
+        return data_train, data_validation, target_train, target_validation
 
 
 def get_train_test_split(preprocessed_dataset, target) -> Tuple[DataFrame, DataFrame, DataFrame, DataFrame]:
