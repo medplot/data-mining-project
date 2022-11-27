@@ -1,74 +1,74 @@
-Accuracy for C = 0.01 and max_iter = 200: 0.8554482878046669
-F1-Score for C = 0.01 and max_iter = 200: 0.8035895909451637
+Accuracy for C = 0.01 and max_iter = 200: 0.7400433438732369
+F2-Score for C = 0.01 and max_iter = 200: 0.6079627347356547
 
-Accuracy for C = 0.01 and max_iter = 500: 0.8554482878046669
-F1-Score for C = 0.01 and max_iter = 500: 0.8035895909451637
+Accuracy for C = 0.01 and max_iter = 500: 0.7400433438732369
+F2-Score for C = 0.01 and max_iter = 500: 0.6079627347356547
 
-Accuracy for C = 0.01 and max_iter = 1000: 0.8554482878046669
-F1-Score for C = 0.01 and max_iter = 1000: 0.8035895909451637
+Accuracy for C = 0.01 and max_iter = 1000: 0.7400433438732369
+F2-Score for C = 0.01 and max_iter = 1000: 0.6079627347356547
 
-Accuracy for C = 0.01 and max_iter = 1500: 0.8554482878046669
-F1-Score for C = 0.01 and max_iter = 1500: 0.8035895909451637
+Accuracy for C = 0.01 and max_iter = 1500: 0.7400433438732369
+F2-Score for C = 0.01 and max_iter = 1500: 0.6079627347356547
 
-Accuracy for C = 0.01 and max_iter = 2000: 0.8554482878046669
-F1-Score for C = 0.01 and max_iter = 2000: 0.8035895909451637
+Accuracy for C = 0.01 and max_iter = 2000: 0.7400433438732369
+F2-Score for C = 0.01 and max_iter = 2000: 0.6079627347356547
 
-Accuracy for C = 0.1 and max_iter = 200: 0.855534871639465
-F1-Score for C = 0.1 and max_iter = 200: 0.8039144369378222
+Accuracy for C = 0.1 and max_iter = 200: 0.739812413401073
+F2-Score for C = 0.1 and max_iter = 200: 0.6077976861713235
 
-Accuracy for C = 0.1 and max_iter = 500: 0.855534871639465
-F1-Score for C = 0.1 and max_iter = 500: 0.8039144369378222
+Accuracy for C = 0.1 and max_iter = 500: 0.739812413401073
+F2-Score for C = 0.1 and max_iter = 500: 0.6077976861713235
 
-Accuracy for C = 0.1 and max_iter = 1000: 0.855534871639465
-F1-Score for C = 0.1 and max_iter = 1000: 0.8039144369378222
+Accuracy for C = 0.1 and max_iter = 1000: 0.739812413401073
+F2-Score for C = 0.1 and max_iter = 1000: 0.6077976861713235
 
-Accuracy for C = 0.1 and max_iter = 1500: 0.855534871639465
-F1-Score for C = 0.1 and max_iter = 1500: 0.8039144369378222
+Accuracy for C = 0.1 and max_iter = 1500: 0.739812413401073
+F2-Score for C = 0.1 and max_iter = 1500: 0.6077976861713235
 
-Accuracy for C = 0.1 and max_iter = 2000: 0.855534871639465
-F1-Score for C = 0.1 and max_iter = 2000: 0.8039144369378222
+Accuracy for C = 0.1 and max_iter = 2000: 0.739812413401073
+F2-Score for C = 0.1 and max_iter = 2000: 0.6077976861713235
 
-Accuracy for C = 10 and max_iter = 200: 0.802740378371358
-F1-Score for C = 10 and max_iter = 200: 0.8061570830588141
+Accuracy for C = 10 and max_iter = 200: 0.576473514051231
+F2-Score for C = 10 and max_iter = 200: 0.556468031959486
 
-Accuracy for C = 10 and max_iter = 500: 0.8554049958872678
-F1-Score for C = 10 and max_iter = 500: 0.8122677691575606
+Accuracy for C = 10 and max_iter = 500: 0.7594770312999609
+F2-Score for C = 10 and max_iter = 500: 0.5788955713504648
 
-Accuracy for C = 10 and max_iter = 1000: 0.8552318282176717
-F1-Score for C = 10 and max_iter = 1000: 0.8026834036219596
+Accuracy for C = 10 and max_iter = 1000: 0.7234163498774292
+F2-Score for C = 10 and max_iter = 1000: 0.6058505758842117
 
-Accuracy for C = 10 and max_iter = 1500: 0.8560110827308541
-F1-Score for C = 10 and max_iter = 1500: 0.8074803698939504
+Accuracy for C = 10 and max_iter = 1500: 0.7078551888300707
+F2-Score for C = 10 and max_iter = 1500: 0.6052395656937941
 
-Accuracy for C = 10 and max_iter = 2000: 0.8556863933503615
-F1-Score for C = 10 and max_iter = 2000: 0.8047353400503288
+Accuracy for C = 10 and max_iter = 2000: 0.7361530536113973
+F2-Score for C = 10 and max_iter = 2000: 0.6074766355140186
 
-Accuracy for C = 100 and max_iter = 200: 0.4087406381228625
-F1-Score for C = 100 and max_iter = 200: 0.46341667096786876
+Accuracy for C = 100 and max_iter = 200: 0.7386399971577788
+F2-Score for C = 100 and max_iter = 200: 0.5588700709947823
 
-Accuracy for C = 100 and max_iter = 500: 0.8496688168318974
-F1-Score for C = 100 and max_iter = 500: 0.8006318010860655
+Accuracy for C = 100 and max_iter = 500: 0.2550182967989484
+F2-Score for C = 100 and max_iter = 500: 0.4546800757156285
 
-Accuracy for C = 100 and max_iter = 1000: 0.8414217065673839
-F1-Score for C = 100 and max_iter = 1000: 0.8146267001903397
+Accuracy for C = 100 and max_iter = 1000: 0.5183500905958006
+F2-Score for C = 100 and max_iter = 1000: 0.5392306825317598
 
-Accuracy for C = 100 and max_iter = 1500: 0.8511840339408633
-F1-Score for C = 100 and max_iter = 1500: 0.7971586978649504
+Accuracy for C = 100 and max_iter = 1500: 0.6610118307457278
+F2-Score for C = 100 and max_iter = 1500: 0.5666134367514544
 
-Accuracy for C = 100 and max_iter = 2000: 0.8452963331745963
-F1-Score for C = 100 and max_iter = 2000: 0.8212897501441618
+Accuracy for C = 100 and max_iter = 2000: 0.7822325647493517
+F2-Score for C = 100 and max_iter = 2000: 0.5536264544911005
 
-Accuracy for C = 1000 and max_iter = 200: 0.8521148101649422
-F1-Score for C = 1000 and max_iter = 200: 0.7910716698118854
+Accuracy for C = 1000 and max_iter = 200: 0.8047926954915267
+F2-Score for C = 1000 and max_iter = 200: 0.41905078164912646
 
-Accuracy for C = 1000 and max_iter = 500: 0.8056625827957921
-F1-Score for C = 1000 and max_iter = 500: 0.8004051382701879
+Accuracy for C = 1000 and max_iter = 500: 0.5218851032081572
+F2-Score for C = 1000 and max_iter = 500: 0.531552295007466
 
-Accuracy for C = 1000 and max_iter = 1000: 0.8433265509329408
-F1-Score for C = 1000 and max_iter = 1000: 0.793667876105759
+Accuracy for C = 1000 and max_iter = 1000: 0.4979926812804206
+F2-Score for C = 1000 and max_iter = 1000: 0.5267782228062121
 
-Accuracy for C = 1000 and max_iter = 1500: 0.8459024200181826
-F1-Score for C = 1000 and max_iter = 1500: 0.8103158413473596
+Accuracy for C = 1000 and max_iter = 1500: 0.836998614417167
+F2-Score for C = 1000 and max_iter = 1500: 0.3707342725083723
 
-Accuracy for C = 1000 and max_iter = 2000: 0.8509892203125676
-F1-Score for C = 1000 and max_iter = 2000: 0.7889432065487453
+Accuracy for C = 1000 and max_iter = 2000: 0.6913703058940562
+F2-Score for C = 1000 and max_iter = 2000: 0.564110715917897
