@@ -59,6 +59,9 @@ parameters.
 
 ### Support Vector Machine
 
+The SVM was implemented with a linear kernel function and evaluated by means of a train/val/test split.
+F2-Score (One Hot Encoding on all ordinal columns with undersampling, C = 100 & max_iter = 500): 0.6083
+
 ### Artificial neural network
 
 The neural network uses an embedding layer for the categorical input values, followed by a dropout layer. For the
