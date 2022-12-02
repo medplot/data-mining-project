@@ -44,17 +44,6 @@ def plot_multiple_accuracy_curves(accuracy_curves: [], labels: [], title: str = 
     fig.savefig(f"Neural network accuracies {datetime.now()}.png", dpi=300)
 
 
-def plot_multiple_accuracy_curves(accuracy_curves: [], labels: [], title: str = "Accuracy curve"):
-    fig = plt.figure()
-    plt.title(title)
-    plt.ylabel("Accuracy")
-    plt.xlabel("Epochs")
-    for index, loss in enumerate(accuracy_curves):
-        plt.plot(loss, label=labels[index])
-    plt.legend()
-    fig.savefig(f"Neural network accuracies {datetime.now()}.png", dpi=300)
-
-
 def plot_multiple_f_scores(f_scores: [], labels: [], title: str = "F-score curve"):
     fig = plt.figure()
     plt.title(title)

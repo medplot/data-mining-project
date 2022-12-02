@@ -62,4 +62,3 @@ class NeuralNetworkPreprocessor:
                                          columns=diabetes_columns)
         target_test = pd.DataFrame(one_hot_encoder.transform(target_test).toarray(), columns=diabetes_columns)
         return data_train, data_validation, data_test, target_train, target_validation, target_test
-
