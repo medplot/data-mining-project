@@ -43,7 +43,7 @@ the notebooks.
 
 ### K-nearest neighbors
 
-### K-nearest centroids
+### Nearest centroids
 
 ### Naive Bayes
 
@@ -64,6 +64,20 @@ parameters.
 The neural network uses an embedding layer for the categorical input values, followed by a dropout layer. For the
 numerical input values, a batch normalization is applied first. After these first steps the input values are
 concatenated and passed into multiple linear layers.
+
+### Results
+
+| K-nearest neighbors             |                    |
+|---------------------------------|--------------------|
+| Nearest centroid                |                    |
+| Decision Tree                   |                    |
+| Random Forest                   |                    |
+| Support Vector Classifier       |                    |
+| Naive Bayes                     |                    |
+| Neural network with embeddings  | 0.8655531658316447 |
+| Neural network one hot encoding |                    |
+
+
 
 ## General functions for all notebooks
 
