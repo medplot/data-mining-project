@@ -75,7 +75,7 @@ concatenated and passed into multiple linear layers.
 | Support Vector Classifier       |                    |
 | Naive Bayes                     |                    |
 | Neural network with embeddings  | 0.8655531658316447 |
-| Neural network one hot encoding |                    |
+| Neural network one hot encoding | 0.8242131481621253 |
 
 
 
