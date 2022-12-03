@@ -75,6 +75,7 @@ concatenated and passed into multiple linear layers.
 | Nearest centroid                | 0.5745641671917665 |
 | Decision Tree                   | 0.5947951590481642 |
 | Random Forest                   | 0.6011349227795215 |
+| XGBoost                         | 0.6086731525564065 |
 | Support Vector Classifier       |                    |
 | Naive Bayes                     |                    |
 | Neural network with embeddings  | 0.8655531658316447 |
