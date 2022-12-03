@@ -1,8 +1,8 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
-from preprocessing.preprocessing import get_preprocessed_brfss_dataset, get_train_test_split, diabetes_columns, \
-    undersample_dataset
+from preprocessing.preprocessing import get_preprocessed_brfss_dataset, diabetes_columns, \
+    undersample_dataset, get_train_validation_test_split, oversample_dataset
 
 CATEGORICAL_COLUMNS = ["GenHealth", "Healthcare", "MedCost", "Checkup", "HighBP",
                        "HighChol", "HeartAttack", "AngiCoro", "Stroke", "Asthma", "Arthritis", "Kidney", "Sex",
@@ -37,13 +37,28 @@ class NeuralNetworkPreprocessor:
     def get_preprocessed_dataset_for_neural_network(self):
         one_hot_encoder = OneHotEncoder()
         complete_target = pd.DataFrame(one_hot_encoder.fit_transform(self.target).toarray(), columns=diabetes_columns)
-        data_train, data_test, target_train, target_test = get_train_test_split(self.dataset, complete_target)
-        return data_train, data_test, target_train, target_test
+        data_train, data_validation, data_test, target_train, target_validation, target_test = \
+            get_train_validation_test_split(self.dataset, complete_target, include_test_data=True)
+        return data_train, data_validation, data_test, target_train, target_validation, target_test
 
     def get_preprocessed_dataset_for_neural_network_undersampled(self):
         one_hot_encoder = OneHotEncoder()
-        data_train, data_test, target_train, target_test = get_train_test_split(self.dataset, self.target)
+        data_train, data_validation, data_test, target_train, target_validation, target_test = \
+            get_train_validation_test_split(self.dataset, self.target, include_test_data=True)
         data_train, target_train = undersample_dataset(data_train, target_train)
         target_train = pd.DataFrame(one_hot_encoder.fit_transform(target_train).toarray(), columns=diabetes_columns)
+        target_validation = pd.DataFrame(one_hot_encoder.transform(target_validation).toarray(),
+                                         columns=diabetes_columns)
         target_test = pd.DataFrame(one_hot_encoder.transform(target_test).toarray(), columns=diabetes_columns)
-        return data_train, data_test, target_train, target_test
+        return data_train, data_validation, data_test, target_train, target_validation, target_test
+
+    def get_preprocessed_dataset_for_neural_network_oversampled(self):
+        one_hot_encoder = OneHotEncoder()
+        data_train, data_validation, data_test, target_train, target_validation, target_test = \
+            get_train_validation_test_split(self.dataset, self.target, include_test_data=True)
+        data_train, target_train = oversample_dataset(data_train, target_train)
+        target_train = pd.DataFrame(one_hot_encoder.fit_transform(target_train).toarray(), columns=diabetes_columns)
+        target_validation = pd.DataFrame(one_hot_encoder.transform(target_validation).toarray(),
+                                         columns=diabetes_columns)
+        target_test = pd.DataFrame(one_hot_encoder.transform(target_test).toarray(), columns=diabetes_columns)
+        return data_train, data_validation, data_test, target_train, target_validation, target_test
