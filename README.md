@@ -49,13 +49,15 @@ the notebooks.
 
 ### Decision Tree
 
-The decision tree could be computed relatively fast allowing us to use cross validation and grid search to
-find the best parameters.
+Since decision trees work best with label encodings, the parameters were optimized for this encoding from the beginning.
+The model achieves an average good performance, whereby de recall with approx. 80% is relatively good, the precision
+with
+approx. 30% is relatively bad.
 
 ### Random forest
 
-The random forest cluster was computation intensive and therefore we used a train/test split to find the best
-parameters.
+The performance of the random forest classifier is similar to the performance of the decision tree classifier and only
+slightly better.
 
 ### Support Vector Machine
 
@@ -67,17 +69,16 @@ concatenated and passed into multiple linear layers.
 
 ### Results
 
-| K-nearest neighbors             |                    |
+| Model                           | F2-score           |
 |---------------------------------|--------------------|
+| K-nearest neighbors             |                    |
 | Nearest centroid                |                    |
-| Decision Tree                   |                    |
-| Random Forest                   |                    |
+| Decision Tree                   | 0.5947951590481642 |
+| Random Forest                   | 0.6011349227795215 |
 | Support Vector Classifier       |                    |
 | Naive Bayes                     |                    |
 | Neural network with embeddings  | 0.8655531658316447 |
 | Neural network one hot encoding | 0.8242131481621253 |
-
-
 
 ## General functions for all notebooks
 
