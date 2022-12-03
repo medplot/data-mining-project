@@ -71,8 +71,8 @@ concatenated and passed into multiple linear layers.
 
 | Model                           | F2-score           |
 |---------------------------------|--------------------|
-| K-nearest neighbors             |                    |
-| Nearest centroid                |                    |
+| K-nearest neighbors             | 0.5876770480427772 |
+| Nearest centroid                | 0.5745641671917665 |
 | Decision Tree                   | 0.5947951590481642 |
 | Random Forest                   | 0.6011349227795215 |
 | Support Vector Classifier       |                    |
