@@ -67,11 +67,12 @@ concatenated and passed into multiple linear layers.
 
 ### Results
 
-| K-nearest neighbors             |                    |
+| Model                           | F2-score           |
 |---------------------------------|--------------------|
+| K-nearest neighbors             |                    |
 | Nearest centroid                |                    |
-| Decision Tree                   |                    |
-| Random Forest                   |                    |
+| Decision Tree                   | 0.5947951590481642 |
+| Random Forest                   | 0.6011349227795215 |
 | Support Vector Classifier       |                    |
 | Naive Bayes                     |                    |
 | Neural network with embeddings  | 0.8655531658316447 |
