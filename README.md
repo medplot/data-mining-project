@@ -67,6 +67,18 @@ The neural network uses an embedding layer for the categorical input values, fol
 numerical input values, a batch normalization is applied first. After these first steps the input values are
 concatenated and passed into multiple linear layers.
 
+### Results
+
+ | K-nearest neighbors             |                    |
+ |---------------------------------|--------------------|
+ | Nearest centroid                |                    |
+ | Decision Tree                   |                    |
+ | Random Forest                   |                    |
+ | Support Vector Classifier       | 0.6083371698823924                   |
+ | Naive Bayes                     |                    |
+ | Neural network with embeddings  | 0.8655531658316447 |
+ | Neural network one hot encoding | 0.8242131481621253 |
+
 ## General functions for all notebooks
 
 To install all packages that are required for the general functions you can use the `requirements.txt` file. Open a
