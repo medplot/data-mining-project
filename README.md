@@ -50,9 +50,10 @@ the notebooks.
 ### Decision Tree
 
 Since decision trees work best with label encodings, the parameters were optimized for this encoding from the beginning.
-The model achieves an average good performance, whereby de recall with approx. 80% is relatively good, the precision
-with
-approx. 30% is relatively bad.
+The model achieves an average good performance, whereby the recall with approx. 80% is relatively good, the precision
+with approx. 30% is relatively bad.
+
+![Decision Tree](images/decision_tree.svg)
 
 ### Random forest
 
