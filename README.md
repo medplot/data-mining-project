@@ -59,6 +59,11 @@ approx. 30% is relatively bad.
 The performance of the random forest classifier is similar to the performance of the decision tree classifier and only
 slightly better.
 
+### XGBoost
+
+The performance of the XGBoost classifier is similar to the performance of the decision tree and the random forest
+classifier. It seems that the decision tree based classifiers cannot fully capture the problem.
+
 ### Support Vector Machine
 
 ### Artificial neural network
@@ -80,6 +85,8 @@ concatenated and passed into multiple linear layers.
 | Naive Bayes                     |                    |
 | Neural network with embeddings  | 0.8655531658316447 |
 | Neural network one hot encoding | 0.8242131481621253 |
+
+![Result plot](images/results_plot.png)
 
 ## General functions for all notebooks
 
