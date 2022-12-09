@@ -67,6 +67,8 @@ classifier. It seems that the decision tree based classifiers cannot fully captu
 
 ### Support Vector Machine
 
+The SVM was implemented with a linear kernel function and evaluated by means of a train/val/test split.
+
 ### Artificial neural network
 
 The neural network uses an embedding layer for the categorical input values, followed by a dropout layer. For the
