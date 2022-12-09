@@ -82,8 +82,8 @@ concatenated and passed into multiple linear layers.
 | Decision Tree                   | 0.5947951590481642 |
 | Random Forest                   | 0.6011349227795215 |
 | XGBoost                         | 0.6086731525564065 |
-| Support Vector Classifier       |                    |
-| Naive Bayes                     |                    |
+| Support Vector Classifier       | 0.6083371698823924 |
+| Naive Bayes                     | 0.8274523809825522 |
 | Neural network with embeddings  | 0.8655531658316447 |
 | Neural network one hot encoding | 0.8242131481621253 |
 
