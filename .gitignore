@@ -8,3 +8,6 @@ brfss_dataset/2015.csv
 brfss_dataset/2015_formats.json
 .env
 *.pyc
+preprocessing/__pycache__
+__pycache__/
+
