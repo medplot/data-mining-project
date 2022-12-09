@@ -21,7 +21,7 @@ readable_column_names = ["Diabetes", "GenHealth", "PhysHealth", "MentHealth", "H
                          "HighBP", "HighChol", "HeartAttack", "AngiCoro", "Stroke", "Asthma", "Arthritis", "Kidney",
                          "Sex", "Income", "SodiumSalt", "Age", "Height", "Weight", "BMI", "Education", "Alcohol",
                          "Smoking", "FruitCons", "VegetCons", "PhysActivity", "Muscles"]
-diabetes_columns = ["Yes", "Yes, but only during pregnancy", "No", "No, but pre-diabetes"]
+diabetes_columns = ["No", "Yes"]
 
 
 def load_dataset():
@@ -40,17 +40,17 @@ def get_preprocessed_brfss_dataset() -> Tuple[DataFrame, DataFrame]:
 def get_train_validation_test_split(preprocessed_dataset, target, include_test_data) \
         -> Union[Tuple[DataFrame, DataFrame, DataFrame, DataFrame], Tuple[
             DataFrame, DataFrame, DataFrame, DataFrame, DataFrame, DataFrame]]:
-    data_train, data_test, target_train, target_test = get_train_test_split(preprocessed_dataset, target)
-    data_train, data_validation, target_train, target_validation = get_train_test_split(data_train, target_train)
+    data_train, data_test, target_train, target_test = get_train_test_split(preprocessed_dataset, target, 0.2)
+    data_train, data_validation, target_train, target_validation = get_train_test_split(data_train, target_train, 0.25)
     if include_test_data:
         return data_train, data_validation, data_test, target_train, target_validation, target_test
     else:
         return data_train, data_validation, target_train, target_validation
 
 
-def get_train_test_split(preprocessed_dataset, target) -> Tuple[DataFrame, DataFrame, DataFrame, DataFrame]:
+def get_train_test_split(preprocessed_dataset, target, test_size) -> Tuple[DataFrame, DataFrame, DataFrame, DataFrame]:
     data_train, data_test, target_train, target_test = train_test_split(
-        preprocessed_dataset, target, test_size=0.2, random_state=42, stratify=target)
+        preprocessed_dataset, target, test_size=test_size, random_state=42, stratify=target)
     return data_train, data_test, target_train, target_test
 
 
@@ -131,6 +131,10 @@ def preprocess_brfss_dataset(dataset: DataFrame) -> Tuple[DataFrame, DataFrame]:
     brfss_preprocessed.columns = readable_column_names
     brfss_preprocessed = remove_refused_columns(brfss_preprocessed)  # removes ca. 115k columns
     brfss_preprocessed = remove_unknown_columns(brfss_preprocessed)  # removes ca. 37k columns
+
+    brfss_preprocessed = brfss_preprocessed[brfss_preprocessed.Diabetes != 2]
+    brfss_preprocessed = brfss_preprocessed[brfss_preprocessed.Diabetes != 4]
+    brfss_preprocessed["Diabetes"] = brfss_preprocessed["Diabetes"].replace(3, 0)
 
     brfss_preprocessed.reset_index(inplace=True, drop=True)
     brfss_target = pd.DataFrame(brfss_preprocessed["Diabetes"])
