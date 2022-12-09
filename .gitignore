@@ -6,3 +6,6 @@ brfss_dataset/2013.csv
 brfss_dataset/2014.csv
 brfss_dataset/2015.csv
 brfss_dataset/2015_formats.json
+preprocessing/__pycache__
+__pycache__/
+*.pyc
