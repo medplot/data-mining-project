@@ -1,0 +1,16 @@
+K = 1, metric = euclidean --> F2 = 0.21588368859239965
+K = 1, metric = cosine --> F2 = 0.24473117520386908
+
+K = 2, metric = euclidean --> F2 = 0.07056472596323973
+K = 3, metric = euclidean --> F2 = 0.14501681921301726
+K = 4, metric = euclidean --> F2 = 0.056268738651239394
+K = 5, metric = euclidean --> F2 = 0.0984247936254327
+K = 6, metric = euclidean --> F2 = 0.0430189965073686
+K = 7, metric = euclidean --> F2 = 0.06994249869315211
+K = 8, metric = euclidean --> F2 = 0.03522634802346995
+K = 9, metric = euclidean --> F2 = 0.057144066541090804
+K = 10, metric = euclidean --> F2 = 0.030447131729569216
+K = 11, metric = euclidean --> F2 = 0.04239912852169084
+K = 12, metric = euclidean --> F2 = 0.02288131934550792
+K = 13, metric = euclidean --> F2 = 0.0331644700124501
+K = 14, metric = euclidean --> F2 = 0.018931608213072545
